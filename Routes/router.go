@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"github.com/goland-biblioStore/v1/books"
 	"github.com/goland-biblioStore/v1/users"
 	"github.com/gorilla/mux"
 )
@@ -13,6 +14,9 @@ func GetRouters() *mux.Router {
 	public := router.PathPrefix("/public").Subrouter()
 	public.HandleFunc("/register", users.RegisterUserController).Methods("POST")
 	public.HandleFunc("/login", users.Login).Methods("POST")
+
+	book := router.PathPrefix("/books").Subrouter()
+	book.HandleFunc("/all", books.GetAll).Methods("GET")
 
 	return router
 }

@@ -1,18 +1,26 @@
 package books
 
-import "github.com/goland-biblioStore/v1/models"
+import (
+	"github.com/goland-biblioStore/v1/brands"
+	"github.com/goland-biblioStore/v1/categories"
+	"github.com/goland-biblioStore/v1/models"
+)
 
+// Book modelo de libro
 type Book struct {
 	models.BaseModel
-	Name        string `json:"name" db:"name"`
-	LoandPrice  string `json:"loand_price" db:"loand_price"`
-	Isbn        string `json:"isbn" db:"isbn"`
-	Description string `json:"description" db:"description"`
-	BrandID     int64  `json:"brand_id" db:"brand_id"`
-	CategoryID  int64  `json:"category_id" db:"category_id"`
-	Status      bool   `json:"status" db:"status"`
+	Name        string              `json:"name" db:"name"`
+	LoandPrice  string              `json:"loand_price" db:"loand_price"`
+	Isbn        string              `json:"isbn" db:"isbn"`
+	Description string              `json:"description" db:"description"`
+	BrandID     int64               `json:"brand_id" db:"brand_id"`
+	Brand       brands.Brand        `json:"brand"`
+	CategoryID  int64               `json:"category_id" db:"category_id"`
+	Category    categories.Category `json:"category"`
+	Status      bool                `json:"status" db:"status"`
 }
 
+// LoanBook modelo de prestamo de libros
 type LoanBook struct {
 	models.BaseModel
 	TotalAmount     string `json:"total_amount" db:"total_amount"`
@@ -20,6 +28,7 @@ type LoanBook struct {
 	UserID          int64  `json:"user_id" db:"user_id"`
 }
 
+// LoanItem modelo de libro prestado
 type LoanItem struct {
 	models.BaseModel
 	PriceUnit  string `json:"price_unit" db:"price_unit"`
