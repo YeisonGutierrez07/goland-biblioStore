@@ -53,7 +53,7 @@ func LoginService(loginData LoginValidator) LoginResponse {
 				Response.Code = 401
 			} else {
 				//issue token
-				token, err := middlewares.GenerateToken([]byte(middlewares.SigningKey), user.ID, user.Email)
+				token, err := middlewares.GenerateToken([]byte("secret"), user.ID, user.Email)
 				if err == nil {
 					zap.S().Infow("error", err)
 					user.LastLogin = time.Now()
