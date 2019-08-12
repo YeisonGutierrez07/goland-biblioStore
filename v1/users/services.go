@@ -43,7 +43,7 @@ func LoginService(loginData LoginValidator) LoginResponse {
 	userValid.Email = strings.TrimSpace(loginData.Email)
 	userValid.Password = strings.TrimSpace(encryptPassword(loginData.Password))
 
-	if !shared.GetDb().Where("email = ?", userValid.Email).First(&user).RecordNotFound() {
+	if !shared.GetDb().Set("gorm:auto_preload", true).Where("email = ?", userValid.Email).First(&user).RecordNotFound() {
 
 		if userValid.Password == user.Password {
 			if !user.Status {
