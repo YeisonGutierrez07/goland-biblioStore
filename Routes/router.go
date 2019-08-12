@@ -2,6 +2,7 @@ package routes
 
 import (
 	persons "github.com/goland-biblioStore/Persons"
+	"github.com/goland-biblioStore/v1/users"
 	"github.com/gorilla/mux"
 )
 
@@ -14,6 +15,10 @@ func GetRouters() *mux.Router {
 	router.HandleFunc("/people/{id}", persons.GetPersonEndPoint).Methods("GET")
 	router.HandleFunc("/people/{id}", persons.CreatePersonEndPoint).Methods("POST")
 	router.HandleFunc("/people/{id}", persons.DeletePersonEndPoint).Methods("DELETE")
+
+	// Endpoints publicos
+	public := router.PathPrefix("/public").Subrouter()
+	public.HandleFunc("/register", users.RegisterUserController).Methods("POST")
 
 	return router
 }
