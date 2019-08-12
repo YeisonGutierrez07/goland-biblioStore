@@ -34,10 +34,5 @@ func Init() {
 
 // GetDb funcion para retornar la base de datos para los diferentes modelos
 func GetDb() *gorm.DB {
-	fmt.Println("----------------------------------------------------------")
-	fmt.Println("----------------------------------------------------------")
-	fmt.Println(db)
-	fmt.Println("----------------------------------------------------------")
-	fmt.Println("----------------------------------------------------------")
 	return db
 }

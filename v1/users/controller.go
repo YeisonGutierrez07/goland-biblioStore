@@ -19,9 +19,23 @@ func RegisterUserController(w http.ResponseWriter, req *http.Request) {
 		response.Status = shared.StatusSuccess
 		response.Data = user
 		json.NewEncoder(w).Encode(response)
+		return
 	}
 	response.Status = shared.StatusFail
 	response.Message = "Hubo un error agregando el usuario"
 	json.NewEncoder(w).Encode(response)
 
+}
+
+// Login funcion para hacer login
+func Login(w http.ResponseWriter, req *http.Request) {
+	var loginValidator LoginValidator
+	var response shared.Response
+
+	_ = json.NewDecoder(req.Body).Decode(&loginValidator)
+
+	responseLogin := LoginService(loginValidator)
+	response.Status = shared.StatusSuccess
+	response.Data = responseLogin
+	json.NewEncoder(w).Encode(response)
 }
