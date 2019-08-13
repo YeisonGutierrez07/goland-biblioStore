@@ -2,5 +2,24 @@
 	"ImportPath": "github.com/goland-biblioStore",
 	"GoVersion": "go1.12.2",
 	"GodepVersion": "v74",
-	"Deps": []
+	"Deps": [
+        {
+			"ImportPath": "github.com/auth0/go-jwt-middleware"
+        },
+        {
+			"ImportPath": "github.com/dgrijalva/jwt-go"
+        },
+        {
+			"ImportPath": "github.com/gorilla/mux"
+        },
+        {
+			"ImportPath": "github.com/jinzhu/gorm"
+        },
+        {
+			"ImportPath": "github.com/jinzhu/gorm/dialects/postgres"
+        },
+        {
+			"ImportPath": "github.com/urfave/negroni"
+		}
+    ]
 }
