@@ -1,0 +1,6 @@
+{
+	"ImportPath": "github.com/goland-biblioStore",
+	"GoVersion": "go1.12.2",
+	"GodepVersion": "v74",
+	"Deps": []
+}
